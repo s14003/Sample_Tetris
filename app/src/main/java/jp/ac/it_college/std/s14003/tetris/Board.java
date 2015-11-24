@@ -5,16 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * Created by s14003 on 15/11/11.
@@ -77,7 +73,7 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     private void updateGame() {
-        if (count++ % FPS == 0) {
+        if (count++ % (FPS / 2) != 0) {
             return;
         }
         if (!fallingTetromino()) {
