@@ -72,6 +72,21 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
         return !(overlapping || fallingTetromino.isOutOfBounds());
     }
 
+    private int[] findFullRows() {
+        int[] row  = new int[22];
+        for (Tetromino fixedTetromino : tetrominoList) {
+            for (Coordinate coordinate : fixedTetromino.getCoordinates()) {
+                rowCounts[coordinate.y]++;
+            }
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int cy = 0; cy < rowCounts.length;cy++) {
+            if (rowCounts[cy] == 10) {
+                list.add(cy);
+            }
+        }
+        return list;
+    }
     private void updateGame() {
         if (count++ % (FPS / 2) != 0) {
             return;

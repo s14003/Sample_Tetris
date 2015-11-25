@@ -134,6 +134,10 @@ public class Tetromino {
         return false;
     }
 
+    public Coordinate[] getCoordinates() {
+        return blockBoardCoordinates;
+    }
+
     public enum  Orientation {
         Right, Down, Left, Up,;
     }
