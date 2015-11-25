@@ -15,6 +15,7 @@
         android:background="#ccc"
         >
         <jp.ac.it_college.std.s14003.tetris.Board
+            android:id="@+id/board"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
@@ -36,4 +37,47 @@
         android:text="0"
         android:gravity="right"
         android:textSize="20sp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/board_area"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="4"
+        >
+        <ImageButton
+            android:id="@+id/left"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:onClick="gameButtonClick"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:id="@+id/right"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@android:drawable/ic_media_play"
+            android:onClick="gameButtonClick"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:id="@+id/fall"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@android:drawable/arrow_down_float"
+            android:onClick="gameButtonClick"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:id="@+id/rotate"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@android:drawable/ic_menu_rotate"
+            android:onClick="gameButtonClick"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
 </RelativeLayout>
