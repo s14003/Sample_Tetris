@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -136,6 +137,21 @@ public class Tetromino {
 
     public Coordinate[] getCoordinates() {
         return blockBoardCoordinates;
+    }
+
+    public int clearRowAndAdjustDown(int row) {
+        ArrayList<Coordinate> newCoodinates = new ArrayList<>();
+
+        for (Coordinate coordinate : blockBoardCoordinates) {
+            if (coordinate.y > row) {
+                newCoodinates.add(new Coordinate(coordinate.x, coordinate.y - 1));
+            }
+            if (coordinate.y < row) {
+                newCoodinates.add(coordinate);
+            }
+        }
+        blockBoardCoordinates = newCoodinates.toArray(new Coordinate[newCoodinates.size()]);
+        return blockBoardCoordinates.length;
     }
 
     public enum  Orientation {
