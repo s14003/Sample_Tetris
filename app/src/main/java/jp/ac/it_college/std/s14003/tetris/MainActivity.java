@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements Board.CallBack {
     private Board board;
     private Handler handler;
+    private Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,12 @@ public class MainActivity extends AppCompatActivity implements Board.CallBack {
             case R.id.rotate:
                 board.send(Input.Rotate);
                 break;
+            case R.id.stop:
+                board.send(Input.Stop);
+                break;
+            case R.id.restart:
+                board.send(Input.Restart);
+                break;
         }
     }
 
@@ -64,11 +72,16 @@ public class MainActivity extends AppCompatActivity implements Board.CallBack {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                TextView scoreView = (TextView)findViewById(R.id.score);
+                TextView scoreView = (TextView) findViewById(R.id.score);
                 int current = Integer.parseInt(scoreView.getText().toString());
                 current += score;
                 scoreView.setText(String.valueOf(current));
+                if (score == 5) {
+                    Board.FPS = 60;
+                }
             }
         });
     }
+
+
 }

@@ -5,6 +5,8 @@
     <string name="right">→</string>
     <string name="fall">↓</string>
     <string name="rotate">↑</string>
+    <string name="stop">停止</string>
+    <string name="restart">再会</string>
 
 
 </resources>
