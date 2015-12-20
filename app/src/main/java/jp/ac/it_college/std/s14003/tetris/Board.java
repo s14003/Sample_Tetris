@@ -14,12 +14,13 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Handler;
 
 /**
  * Created by s14003 on 15/11/11.
  */
 public class Board extends SurfaceView implements SurfaceHolder.Callback {
-    public static final int FPS = 30;
+    public static  int FPS = 30;
     private SurfaceHolder holder;
     private DrawThread thread;
     private Bitmap blocks;
@@ -28,6 +29,7 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
     private Tetromino fallingTetromino;
     private ArrayList<Tetromino> tetrominoList = new ArrayList<>();
     private long count = 0;
+    private Handler handler;
 
     public Board(Context context) {
         super(context);
@@ -111,6 +113,7 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     private void updateGame() {
+
         if (count++ / (FPS / 2) == 0) {
             return;
         }
@@ -203,9 +206,9 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
                 if (holder == null ||
                         System.currentTimeMillis() - prevTime < 1000 / FPS) {
                     try {
-                        sleep(1000 / FPS / 3);
-                    } catch(InterruptedException e) {
-                        Log.w("DrawThread", e.getMessage(),e);
+                        sleep(1000 / FPS / 4);
+                    } catch (InterruptedException e) {
+                        Log.w("DrawThread", e.getMessage(), e);
                         return;
                     }
                     continue;
@@ -228,6 +231,6 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
 
     public interface CallBack {
         void scoreAdd(int score);
-
     }
+
 }
