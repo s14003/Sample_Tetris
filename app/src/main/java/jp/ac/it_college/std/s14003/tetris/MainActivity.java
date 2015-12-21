@@ -71,13 +71,10 @@ public class MainActivity extends AppCompatActivity implements Board.CallBack {
                 current += score;
                 scoreView.setText(String.valueOf(current));
                 if (current >= 5 && current <= 9) {
-                    Log.d("speed", "OK!!");
                     board.setSpeed(4);
                 } else if (current >= 10 && current <= 19) {
-                    Log.d("speed", "Second!!");
                     board.setSpeed(6);
                 } else if (current >= 20 && current <= 29) {
-                    Log.d("speed","Max!");
                     board.setSpeed(8);
                 }
             }
