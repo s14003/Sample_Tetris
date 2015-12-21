@@ -20,7 +20,7 @@ import java.util.logging.Handler;
  * Created by s14003 on 15/11/11.
  */
 public class Board extends SurfaceView implements SurfaceHolder.Callback {
-    public static  int FPS = 30;
+    public static final int FPS = 30;
     private SurfaceHolder holder;
     private DrawThread thread;
     private Bitmap blocks;
@@ -29,7 +29,7 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
     private Tetromino fallingTetromino;
     private ArrayList<Tetromino> tetrominoList = new ArrayList<>();
     private long count = 0;
-    private Handler handler;
+    private int speed = 2;
 
     public Board(Context context) {
         super(context);
@@ -114,7 +114,7 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
 
     private void updateGame() {
 
-        if (count++ / (FPS / 2) == 0) {
+        if (count++ / (FPS / speed) == 0) {
             return;
         }
         count = 0;
@@ -197,6 +197,7 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+
     private class DrawThread extends Thread {
          boolean isFinished;
         @Override
@@ -233,4 +234,7 @@ public class Board extends SurfaceView implements SurfaceHolder.Callback {
         void scoreAdd(int score);
     }
 
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 }

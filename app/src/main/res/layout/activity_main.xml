@@ -81,28 +81,5 @@
             android:scaleType="fitCenter" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stop"
-        android:id="@+id/stop"
-        android:layout_marginTop="91dp"
-        android:onClick="gameButtonClick"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/score"
-        android:layout_alignLeft="@+id/score"
-        android:layout_alignStart="@+id/score"
-        android:layout_marginLeft="47dp"
-        android:layout_marginStart="47dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/restart"
-        android:id="@+id/restart"
-        android:onClick="gameButtonClick"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/stop"
-        android:layout_alignLeft="@+id/stop"
-        android:layout_alignStart="@+id/stop" />
 </RelativeLayout>

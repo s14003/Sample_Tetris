@@ -8,6 +8,7 @@ import android.media.Image;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements Board.CallBack {
     private Board board;
     private Handler handler;
-    private Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +57,6 @@ public class MainActivity extends AppCompatActivity implements Board.CallBack {
             case R.id.rotate:
                 board.send(Input.Rotate);
                 break;
-            case R.id.stop:
-                board.send(Input.Stop);
-                break;
-            case R.id.restart:
-                board.send(Input.Restart);
-                break;
         }
     }
 
@@ -76,8 +70,15 @@ public class MainActivity extends AppCompatActivity implements Board.CallBack {
                 int current = Integer.parseInt(scoreView.getText().toString());
                 current += score;
                 scoreView.setText(String.valueOf(current));
-                if (score == 5) {
-                    Board.FPS = 60;
+                if (current >= 5 && current <= 9) {
+                    Log.d("speed", "OK!!");
+                    board.setSpeed(4);
+                } else if (current >= 10 && current <= 19) {
+                    Log.d("speed", "Second!!");
+                    board.setSpeed(6);
+                } else if (current >= 20 && current <= 29) {
+                    Log.d("speed","Max!");
+                    board.setSpeed(8);
                 }
             }
         });
