@@ -4,6 +4,7 @@
 
 #変更したところ
 ・MainActivity.javaのscoreAdd
+
 ・Board.javaのupdateGame
 
 #追加したところ
